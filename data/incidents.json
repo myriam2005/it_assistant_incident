@@ -1,0 +1,18 @@
+[
+  {
+    "id": "INC-001",
+    "title": "HTTP 502 caused by unavailable backend",
+    "symptoms": "Gateway returns 502 and backend health check fails",
+    "cause": "Backend service was not available on its configured port",
+    "resolution": "The operations team verified the service status and configuration, then restored the backend using the approved procedure",
+    "keywords": ["502", "gateway", "backend", "connection refused", "health check"]
+  },
+  {
+    "id": "INC-002",
+    "title": "Slow application due to database pool saturation",
+    "symptoms": "Requests are slow and database connections are frequently unavailable",
+    "cause": "Connection pool reached its capacity",
+    "resolution": "The team inspected query duration and pool configuration before applying an approved capacity adjustment",
+    "keywords": ["slow", "database", "pool", "timeout", "connections"]
+  }
+]

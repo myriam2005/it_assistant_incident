@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Procedure: investigate HTTP 502",
+    "content": "Check gateway logs, identify the upstream service and port, inspect the backend health status, and compare the current configuration with the approved deployment configuration. Do not restart production services without authorization.",
+    "keywords": ["502", "gateway", "upstream", "backend", "health"]
+  },
+  {
+    "title": "Procedure: investigate database pool warnings",
+    "content": "Review connection pool usage, slow queries, and application connection lifecycle. Escalate before changing production capacity settings.",
+    "keywords": ["database", "pool", "connections", "slow", "warning"]
+  }
+]

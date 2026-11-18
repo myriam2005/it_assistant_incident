@@ -1,0 +1,30 @@
+[
+  {
+    "timestamp": "2026-11-17 09:42:10",
+    "service": "web-gateway",
+    "level": "ERROR",
+    "message": "HTTP 502 Bad Gateway: upstream connection refused",
+    "details": "The gateway could not connect to backend service at 127.0.0.1:8000"
+  },
+  {
+    "timestamp": "2026-11-17 09:43:02",
+    "service": "backend-api",
+    "level": "ERROR",
+    "message": "Health check failed",
+    "details": "No healthy response received from backend"
+  },
+  {
+    "timestamp": "2026-11-17 10:05:31",
+    "service": "database",
+    "level": "WARNING",
+    "message": "Database connection pool usage is high",
+    "details": "Pool usage reached 85 percent"
+  },
+  {
+    "timestamp": "2026-11-17 10:08:00",
+    "service": "web-gateway",
+    "level": "INFO",
+    "message": "Gateway process started",
+    "details": "Service startup completed"
+  }
+]

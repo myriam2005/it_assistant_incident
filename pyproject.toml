@@ -1,0 +1,22 @@
+[project]
+name = "it-incident-assistant"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "myriam2005", email = "myriam.kary@etudiant-fst.utm.tn" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "langchain>=1.5.0",
+    "langchain-groq>=1.2.0",
+    "langgraph>=1.2.22",
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+it-incident-assistant = "it_incident_assistant:main"
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"

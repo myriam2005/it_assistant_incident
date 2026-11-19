@@ -41,6 +41,27 @@ START -> gather -> agent -> (tools -> agent)* -> fin
 - Données fictives, aucune action sur un vrai serveur.
 - Le diagnostic doit être vérifié par un humain.
 
-## Exemples d'exécution
+## V2 : recherche sémantique
 
-Colle ici tes deux sorties : le test 502 et le test base de données.
+La V1 cherchait des mots exacts. La V2 utilise des embeddings
+multilingues (fastembed, `paraphrase-multilingual-MiniLM-L12-v2`) et
+ChromaDB : une question en français retrouve des données en anglais.
+
+Indexation (à relancer si les JSON changent) :
+
+```bash
+uv run python -m it_incident_assistant.index_data
+```
+
+Choix de la méthode dans `.env` :
+
+```
+SEARCH_MODE=semantic   # ou keyword (V1)
+```
+
+Filtrage des résultats : plafond de distance (0,72) + marge relative
+(0,12) par rapport au meilleur résultat. Un seuil fixe ne fonctionnait
+pas : avec des phrases mal orthographiées, un bon résultat dépassait le
+bruit d'une autre phrase.
+
+Limite : calibré sur 8 documents seulement.

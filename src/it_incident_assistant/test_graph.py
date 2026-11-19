@@ -3,7 +3,7 @@ from it_incident_assistant.agent.graph import graph
 config = {"configurable": {"thread_id": "test-001"}}
 
 result = graph.invoke(
-    {"messages": [("user", "Mon serveur web retourne une erreur 502.")]},
+    {"messages": [("user", "le serveur web tourne une erreur 502.")]},
     config=config,
 )
 

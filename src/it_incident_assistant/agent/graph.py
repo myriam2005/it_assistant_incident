@@ -7,16 +7,19 @@ from langchain_groq import ChatGroq
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import START, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode, tools_condition
-
-from it_incident_assistant.tools.incident_tools import (
-    TOOLS,
-    search_documentation,
-    search_incidents,
-    search_logs,
-)
+import importlib
 
 load_dotenv()
 
+
+SEARCH_MODE = os.getenv("SEARCH_MODE", "semantic")  # "semantic" ou "keyword"
+_module_name = "semantic_tools" if SEARCH_MODE == "semantic" else "incident_tools"
+_tools_module = importlib.import_module(f"it_incident_assistant.tools.{_module_name}")
+
+TOOLS = _tools_module.TOOLS
+search_logs = _tools_module.search_logs
+search_incidents = _tools_module.search_incidents
+search_documentation = _tools_module.search_documentation
 api_key = os.getenv("GROQ_API_KEY")
 model_name = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
@@ -47,6 +50,10 @@ Règles strictes :
 - Si les trois recherches sont vides, réponds uniquement que les sources
   locales ne contiennent rien, et invite l'utilisateur à donner plus de
   détails ou à contacter un technicien.
+- Lis chaque résultat d'outil avant d'écrire. Si un résultat contient des
+  données (un log, un incident, un document), tu dois l'utiliser dans la
+  section correspondante. N'écris "Aucun ... trouvé" que si le résultat de
+  l'outil est exactement "Aucun ... trouvé".
 Format (court, sans tableau) :
 1. Faits observés (logs)
 2. Incidents similaires (ID, cause, résolution)

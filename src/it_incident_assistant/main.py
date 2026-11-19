@@ -3,12 +3,12 @@ from it_incident_assistant.agent.graph import graph
 
 def main():
     print("=" * 55)
-    print("IT INCIDENT ASSISTANT — V1")
+    print("IT INCIDENT ASSISTANT — V3")
     print("Décris un incident informatique. Tape 'quit' pour sortir.")
     print("=" * 55)
 
     # Un identifiant stable permet de retrouver le même fil de conversation.
-    thread_id = "demo-session-002"
+    thread_id = "demo-session-001"
     config = {"configurable": {"thread_id": thread_id}}
 
     while True:
